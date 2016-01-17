@@ -36,11 +36,12 @@ object MyList {
 		def go(l: List[A], r: List[B])(f: A => List[B]): List[B] = l match {
 			case Nil => Nil
 			case h::t => go(t, r ++ f(h))(f)
-
 		}
-
+		go(l, List[B]())(f)
 	}
 
 
-	
+
+
+
 }
