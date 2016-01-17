@@ -1,4 +1,3 @@
-
 import org.scalatest.FlatSpec
 
 class ListSpec extends FlatSpec {
@@ -20,6 +19,9 @@ class ListSpec extends FlatSpec {
 	}	
 	it should "(map2) increment every element by one" in {
 		assert(map2(a)(a => a+1) == a1)
+	}
+	it should "(map3) increment every element by one" in {
+		assert(map3(a)(a => a+1) == a1)
 	}
 
 	/**

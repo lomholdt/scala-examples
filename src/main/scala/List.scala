@@ -21,6 +21,13 @@ object MyList {
 		case h::t => f(h) :: map2(t)(f)
 		case _ => Nil
 	}
+
+	def unit[A] (a: => A): List[A] = List(a)
+
+	// map using monadic style with unit method. 
+	def map3[A,B](l: List[A])(f: A => B): List[B] = {
+		flatMap(l)(a => unit(f(a)))
+	}
 	
 	// flatMap using build-in flatten method
 	// no pattern matching
@@ -35,11 +42,12 @@ object MyList {
 		case h::t => f(h) ++ flatMap2(t)(f)
 	}
 
-	// 
+	// flatMap using Lists built-in method foldLeft
 	def flatMap3[A,B](l: List[A])(f: A => List[B]): List[B] = {
 		l.foldLeft(List[B]())(_ ++ f(_))
 	}
 
+	// flatMap that's tailrecursive a.k.a no stack overflow
 	def flatMap4[A,B](l: List[A])(f: A => List[B]): List[B] = {
 		@tailrec
 		def go(l: List[A], r: List[B])(f: A => List[B]): List[B] = l match {
@@ -48,6 +56,9 @@ object MyList {
 		}
 		go(l, List[B]())(f)
 	}
+
+	// Use built-in flatMap method on List
+	def flatMap5[A,B](l: List[A])(f: A => List[B]): List[B] = l.flatMap(f)
 }
 
 
