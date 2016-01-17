@@ -3,9 +3,15 @@
 /**
  * Object with List methods in 
  * different variations
+ * 
+ * @author Jonas Lomholdt
+ * @date 17/01-2016
  */
 object MyList {
 	
+	/**
+	 * map
+	 */
 	
 	def map[A,B](l: List[A])(f: A => B): List[B] = l match {
 		case Nil => Nil
@@ -17,6 +23,11 @@ object MyList {
 		case _ => Nil
 	}
 
+
+	/**
+	 * flatMap
+	 */
+	
 	def flatMap[A,B](l: List[A])(f: A => List[B]): List[B] = {
 		map(l)(f).flatten
 	}	
@@ -39,9 +50,6 @@ object MyList {
 		}
 		go(l, List[B]())(f)
 	}
-
-
-
-
-
 }
+
+
