@@ -59,6 +59,19 @@ object MyList {
 
 	// Use built-in flatMap method on List
 	def flatMap5[A,B](l: List[A])(f: A => List[B]): List[B] = l.flatMap(f)
+
+	// foldRight using pattern matching
+	def foldRight[A,B](l: List[A], z: B)(f: (A, B) => B): B = l match {
+		case Nil => z
+		case h::t => f(h, foldRight(t, z)(f))
+	}
+
+	// tailrecursive version of foldLeft
+	@tailrec
+	def foldLeft[A,B](l: List[A], z: B)(f: (B, A) => B): B = l match {
+		case Nil => z
+		case h::t => foldLeft(t, f(z,h))(f)
+	}
 }
 
 

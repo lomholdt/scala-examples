@@ -38,6 +38,24 @@ class ListSpec extends FlatSpec {
 	}		
 	it should "(flatMap4) every element" in {
 		assert(flatMap4(b)(b => b) == b1)
-	}	
+	}
+
+	/**
+	 * foldRight
+	 */
+	it should "(foldRight) return the lists sum" in {
+		assert( foldRight(a,0)((a,b) => a+b) == 15)
+	}
+
+	/**
+	 * foldLeft
+	 */
+	it should "(foldLeft) return the lists sum" in {
+		assert( foldLeft(a,0)((a,b) => a+b) == 15)
+	}
 	
+
+
+
+
 }
