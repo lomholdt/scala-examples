@@ -11,6 +11,10 @@ class OptionSpec extends FlatSpec {
 		assert(map(a)(a => a+1) == Some(2))
 	}
 
+	it should "(map2) increment element by one" in {
+		assert(map2(a)(a => a+1) == Some(2))
+	}
+
 	it should "(flatMap) increment element by one" in {
 		assert(flatMap(a)(a => Some(a+1)) == Some(2))
 	}

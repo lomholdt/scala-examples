@@ -4,7 +4,7 @@ import scala.annotation.tailrec
  * Object with typical List methods 
  * in different variations.
  * 
- * @author 		Jonas Lomholdt
+ * @author	Jonas Lomholdt
  * @date        2016-01-17
  * @timestamp 	2016-01-17T21:14:13+0100
  */
