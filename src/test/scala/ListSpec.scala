@@ -38,6 +38,9 @@ class ListSpec extends FlatSpec {
 	}		
 	it should "(flatMap4) every element" in {
 		assert(flatMap4(b)(b => b) == b1)
+	}	
+	it should "(flatMap5) every element" in {
+		assert(flatMap5(b)(b => b) == b1)
 	}
 
 	/**
@@ -45,6 +48,9 @@ class ListSpec extends FlatSpec {
 	 */
 	it should "(foldRight) return the lists sum" in {
 		assert( foldRight(a,0)((a,b) => a+b) == 15)
+	}
+	it should "(foldRight2) return the lists sum" in {
+		assert( foldRight2(a,0)((a,b) => a+b) == 15)
 	}
 
 	/**
@@ -54,8 +60,4 @@ class ListSpec extends FlatSpec {
 		assert( foldLeft(a,0)((a,b) => a+b) == 15)
 	}
 	
-
-
-
-
 }

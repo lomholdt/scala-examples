@@ -66,6 +66,11 @@ object MyList {
 		case h::t => f(h, foldRight(t, z)(f))
 	}
 
+	// foldRight using .reverse to achieve tailrecursive function
+	def foldRight2[A,B](l: List[A], z: B)(f: (A, B) => B): B = {
+		foldLeft(l.reverse, z)((b, a) => f(a,b))
+	}
+
 	// tailrecursive version of foldLeft
 	@tailrec
 	def foldLeft[A,B](l: List[A], z: B)(f: (B, A) => B): B = l match {
