@@ -40,7 +40,9 @@ trait Monad[F[_]] extends Functor[F] {
 
 // We got a Monad trait, that if provided a unit and flatMap method
 // now also provides the map method, since it's implementet in terms of 
-// flatMap. So how do we use it? Let's create a Monad for the List type.
+// flatMap. The unit method simply takes a value, and wraps that value
+// in the Monad context. Look at the example below to get the idea. 
+// So how do we use it? Let's create a Monad for the List type.
 
 object Monad {
   val listMonad = new Monad[List] {
@@ -84,4 +86,19 @@ object Monad {
 // 
 // flatMap(x)(unit) == x
 // flatMap(unit(y))(f) == f(y)
-//         
+//
+// So what is a Monad, if you have to take all that and put it into one sentence?
+// 
+// "A Monad is an implementation of one of the minimal sets of monadic combinators, 
+// satisfying the laws of associativity and identity." (Chiusano and Bjarnason, 2014, p. 199)
+// 
+// Where a "minimal set of monadic combinators" in our case is unit and flatMap.
+// There are other minimal sets
+// 
+// * unit and compose
+// * unit, map and compose
+// 
+// But let's not worry about that, since we are doing just fine with unit and flatMap.
+// 
+// REFERENCES 
+// Chiusano, P., & Bjarnason, R. (2014). Functional Programming in Scala. Manning Publications Co.. ISO 690	
