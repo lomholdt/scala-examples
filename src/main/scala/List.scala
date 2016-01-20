@@ -50,11 +50,11 @@ object MyList {
 	// flatMap that's tailrecursive a.k.a no stack overflow
 	def flatMap4[A,B](l: List[A])(f: A => List[B]): List[B] = {
 		@tailrec
-		def go(l: List[A], r: List[B])(f: A => List[B]): List[B] = l match {
+		def go(l: List[A])(r: List[B])(f: A => List[B]): List[B] = l match {
 			case Nil => r
-			case h::t => go(t, r ++ f(h))(f)
+			case h::t => go(t)(r ++ f(h))(f)
 		}
-		go(l, List[B]())(f)
+		go(l)(List[B]())(f)
 	}
 
 	// Use built-in flatMap method on List

@@ -1,3 +1,5 @@
+import scala.language.higherKinds
+
 // First we need the Functor trait 
 // A Functor can be defined as a data type that implements map.
 
@@ -11,8 +13,10 @@ trait Functor[F[_]] {
 
 // Here's an instance for List of a Functor: 
 
-val listFunctor = new Functor[List] { // <-- Parrametric choice of F right here
-	def map[A,B](as: List[A])(f: A => B): List[B] = as.map(f) // as map f
+object Functor {
+	val listFunctor = new Functor[List] { // <-- Parrametric choice of F right here
+		def map[A,B](as: List[A])(f: A => B): List[B] = as.map(f) // as map f
+	}
 }
 
 // A Functor must abbide a law. 
